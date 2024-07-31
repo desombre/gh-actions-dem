@@ -36,9 +36,48 @@ The basic setup is automated with a script provided by github itself. Using tags
 
 ## Triggering actions
 ### gh cli
-### VS code add-on
+
+Github has a cli tool you can use to interact the it, this includes workflows.
+You can find the installation guide [here](https://cli.github.com/).
+
+To get the workflows of a repository make sure you are in the folder on your machine, then run `gh workflow list`. You will see the workflows with their status and ids.
+```
+NAME                             STATE   ID       
+--------------------------------------------------
+CI                               active  110063155
+GitHub Actions Re-usable Demo    active  110063352
+GitHub Actions Self-hosted Demo  active  110063353
+GitHub Actions Demo              active  110063354
+```
+
+To trigger a `workflow_dispatch` run `gh workflow run [<workflow-id> | <workflow-name>] [flags]`. In our case for example: `gh workflow run "GitHub Actions Demo" --field tag=0.0.1`.
+
+This creates a new workflow run. You can see all / the latest runs using `gh run list`. This also shows you the status in a short overview format.
+```
+STATUS  TITLE                            WORKFLOW                        BRANCH  EVENT              ID   ...                 
+
+✓       GitHub Actions Demo              GitHub Actions Demo             master  workflow_dispatch  10176662883  ...
+
+```
+
+To get the details of a run after the fact use `gh run view [run-id]` or if you want to see the live progress you can use `gh run watch [run-id]`.
+
+Using the cli you can create scripts to automate use cases for your own needs, e.g. run the tests and when successful, deploy to dev.
 
 ## Running locally
+
+You can also run workflows on you machine using [`act`](https://github.com/nektos/act).
+This is most commonly used to debug/work on workflows that are WIP. 
+
+Act has event support, e.g. you can simulate a push to trigger workflows and debug the behavior. Alternatively you can trigger workflows by their filename.
+
+You can get an overview of existing jobs and workflows with `act --list`.
+
+To run a job using `act -j [job]` or a workflow using `act -W [workflow]`.
+
+Act will try to find the platform the job ha to run on and using docker run the action in a container.
+
+If you used a self-hosted runner act will not know what platform it actually has to use and you will see the following error message: `🚧  Skipping unsupported platform -- Try running with '-P local=...'`. Using the flag `-P`you can define what image you want act to use, e.g. `act -W ./.github/workflows/self-hosted.yml -P local=ubuntu`.
 
 _Note:_ `act` can also be installed as an add-on to the github-cli
 
