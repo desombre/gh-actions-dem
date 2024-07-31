@@ -20,7 +20,7 @@ jobs:
         - name: Check out repository code
           uses: actions/checkout@v4
         - name: Re-use workflow
-          uses: ./.github/workflows/reusable.yml
+          uses: https://github.com/desombre/gh-actions-demo/blob/master/.github/workflows/reusable.yml@master
           with:
             tag: ${{ inputs.tag }}
             runs-on: ubuntu-latest
