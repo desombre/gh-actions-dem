@@ -14,6 +14,7 @@ jobs:
       tag: ${{ inputs.tag }}
       runs-on: local
   show-runner-again:
+    needs: show-runner
     uses: ./.github/workflows/reusable.yml
     with:
       tag: ${{ inputs.tag }}
