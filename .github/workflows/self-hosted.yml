@@ -1,0 +1,25 @@
+name: GitHub Actions Self-hosted Demo
+on:
+    workflow_dispatch:
+        inputs:
+          tag:
+            required: true
+            type: string
+            description: Version tag of the release
+
+jobs:
+  show-runner:
+    uses: ./.github/workflows/reusable.yml
+    with:
+      tag: ${{ inputs.tag }}
+      runs-on: local
+  show-runner-again:
+    runs-on: ubuntu-18.04
+    needs: show-runner
+    steps:
+        - name: Re-use workflow
+          uses: ./.github/workflows/reusable.yml
+          with:
+            tag: ${{ inputs.tag }}
+            runs-on: local
+

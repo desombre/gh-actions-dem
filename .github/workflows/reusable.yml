@@ -1,0 +1,20 @@
+name: GitHub Actions Re-usable Demo
+on:
+    workflow_call:
+      inputs:
+        runs-on:
+          required: true
+          type: string
+        tag:
+            required: true
+            type: string
+            description: Version tag of the release
+
+jobs:
+  show-runner:
+    runs-on: ${{ inputs.runs-on }}
+    steps:
+      - run: echo "🎉 The job was triggered by a ${{ github.event_name }} event."
+      - run: echo "🎉 The following inputs were provided ${{ inputs }} event."
+      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+      - run: echo "🍏 This job's status is ${{ job.status }}."
