@@ -1,11 +1,11 @@
 name: GitHub Actions Self-hosted Demo
 on:
-    workflow_dispatch:
-        inputs:
-          tag:
-            required: true
-            type: string
-            description: Version tag of the release
+  workflow_dispatch:
+      inputs:
+        tag:
+          required: true
+          type: string
+          description: Version tag of the release
 
 jobs:
   show-runner:
