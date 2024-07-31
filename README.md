@@ -22,11 +22,15 @@ After theses things are defined you start defining jobs. Jobs have a name, in th
 `runs-on` defines on what platform the actions should be run. This can be one or multiple platforms. These can be [hosted by github](https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners) or [self-hosted](https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/about-self-hosted-runners).
 
 
-### Calling external actions
+### Calling external workflows
 
-Instead of running a command directly with `run`, you can also call another action using the `uses` keyword. This can be en external one found on the [marketplace](https://github.com/marketplace?type=actions) or an internal one.
+Instead of running a command directly with `run`, you can also call another workflow using the `uses` keyword. This can be en external one found on the [marketplace](https://github.com/marketplace?type=actions) or an internal one.
 
-You can provide the action with inputs using the `with` keyword.
+You can provide the workflow with inputs using the `with` keyword.
+
+### Using composite actions
+
+Instead of re-using a whole workflow, you can use [composite actions](https://docs.github.com/en/actions/creating-actions/creating-a-composite-action) to re-use actions in other workflows.
 
 ## Self-hosted runners
 
