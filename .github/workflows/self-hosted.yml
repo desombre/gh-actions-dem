@@ -14,12 +14,12 @@ jobs:
       tag: ${{ inputs.tag }}
       runs-on: local
   show-runner-again:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     needs: show-runner
     steps:
         - name: Re-use workflow
           uses: ./.github/workflows/reusable.yml
           with:
             tag: ${{ inputs.tag }}
-            runs-on: local
+            runs-on: ubuntu-latest
 
