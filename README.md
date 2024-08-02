@@ -2,15 +2,15 @@
 
 ## Getting started
 
-Actions are defined in `.yml`/`.yaml` files that have to be located in the directory `.github/workflows`.
+Workflows are defined in `.yml`/`.yaml` files that have to be located in the directory `.github/workflows`.
 A workflow is a collection of actions.
 When the workflow is availabe on the default branch, github willl pick it up and run it according to the triggers.
 
 ### Structure
 
-The actions file should start with the name of the action, e.g. `name: GitHub Actions Demo`.
+The workflows file should start with the name of the action, e.g. `name: GitHub Actions Demo`.
 
-The next thing that should be defined, are the triggers of the action with the `on` keyword.
+The next thing that should be defined, are the triggers of the workflow with the `on` keyword.
 You can define restrictions for some triggers, e.g. a tag having to follow a specific format or a merge having to happen on a specific branch.
 Some, but not all triggers are:
 - `push`:  push a commit or tag
